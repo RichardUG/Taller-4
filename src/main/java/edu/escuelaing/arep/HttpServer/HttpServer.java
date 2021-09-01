@@ -1,5 +1,6 @@
 package edu.escuelaing.arep.HttpServer;
 
+import edu.escuelaing.arep.framework.webLoader;
 import org.apache.commons.io.FilenameUtils;
 
 import javax.imageio.ImageIO;
@@ -10,11 +11,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class HttpServer {
+    private webLoader webLoader1;
     private String[] extensions = new String[]{"css", "html", "js"};
     private static final HttpServer _instance = new HttpServer();
     public static HttpServer getInstance(){return _instance;}
     public HttpServer(){}
     public void start(String[] args) throws IOException{
+        webLoader1.init();
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(getPort());
